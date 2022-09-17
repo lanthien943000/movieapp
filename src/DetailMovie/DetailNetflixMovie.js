@@ -67,6 +67,7 @@ function DetailNetflix({ UrlData }) {
   return (
     <div className="detail_container">
       {movies.map((movie) => {
+        // eslint-disable-next-line eqeqeq
         if (movie.id == params.id) {
           return (
             <div key={movie.id}>
