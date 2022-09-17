@@ -1,38 +1,958 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+* {
+    box-sizing: border-box;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  body {
+    font-family: "ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
   }
-  to {
-    transform: rotate(360deg);
+  .container {
+    margin: 0 auto;
+    padding: 0;
   }
-}
+  /* navbar*/
+  .navbar_container {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+  .navbar {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+  }
+  .logo {
+    width: 140px;
+    cursor: pointer;
+  }
+  .logo img {
+    width: 100%;
+    margin-left: 10px;
+  }
+  .navbar_search {
+    display: flex;
+    padding-left: 25px;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .iconsearch {
+    color: rgb(227, 227, 227);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transform: translateX(24px) translateY(8px);
+  }
+  .input {
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #fff;
+    cursor: pointer;
+    width: 0;
+    padding: 10px;
+    opacity: 0;
+    background-color: #222;
+    transition: 0.3s ease-in;
+    color: white;
+  }
+  .input:focus {
+    padding-left: 20px;
+    width: 300px;
+    cursor: pointer;
+    opacity: 1;
+    border-radius: 6px;
+  }
+  .navbar_search:hover .iconsearch {
+    color: white;
+  }
+  
+  /* introl video */
+  .introl_container {
+    background-color: #222;
+    position: relative;
+    color: white;
+    padding: 26% 0 30% 0;
+  }
+  .videoItrol {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .infoIntrol {
+    position: absolute;
+    top: 160px;
+    left: 100px;
+    background-image: linear-gradient(
+      180deg,
+      transparent,
+      rgba(0, 0, 0, 0.8) 100%,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.8)
+    );
+  }
+  .headdingIntrol {
+    font-size: 60px;
+    transition: all 0.3s ease;
+  }
+  .overViewIntrol {
+    font-size: 18px;
+    line-height: 1.3;
+    padding-top: 25px;
+    width: 100%;
+    max-width: 550px;
+  }
+  #btnVolume {
+    top: 50%;
+    right: 20%;
+    left: 0;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    padding: 6px;
+    transform: scale(1);
+    transition: all 0.3 ease;
+  }
+  .btnVolume:hover {
+    color: #fff;
+    transform: scale(1.2);
+    background-color: rgba(211, 211, 211, 0.18);
+  }
+  .vollume {
+    margin: 0;
+  }
+  .fadebottom {
+    background-image: linear-gradient(
+      180deg,
+      transparent,
+      rgba(15, 15, 15) 40%,
+      rgba(10, 10, 10),
+      rgba(10, 10, 10)
+    );
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    position: absolute;
+  }
+  
+  
+  .home_movie {
+    background-color: #1e272e;
+    color: rgb(0, 0, 0);
+    padding-bottom: 50px;
+    padding-top: 20px;
+  }
+  .content_movie {
+    padding: 20px 20px 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+  }
+  .nav_title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .nav_title h3 {
+    display: flex;
+    align-items: center;
+  }
+  .nav_title h3:hover {
+    color: #0c2461;
+  }
+  .content_movie h1 {
+    margin-top: 0;
+    font-size: 30px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+  }
+  .list_movie {
+    display: grid;
+    gap: 25px;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    scroll-behavior: smooth;
+    padding-left: 8px;
+  }
+  .movie_item {
+    transition: all 0.2s linear;
+    height: 100%;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .movie_item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .movie_item:hover {
+    transform: scale(1.1);
+    z-index: 10;
+    opacity: 1;
+  }
+  .movie_rate {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+  .bg_content {
+    background-image: linear-gradient(
+      180deg,
+      transparent,
+      rgba(15, 15, 15, 0.8) 90%,
+      rgba(17, 17, 17),
+      rgba(17, 17, 17)
+    );
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    position: absolute;
+  }
+  .heading_rating {
+    font-size: 20px;
+  }
+  #icon_star {
+    color: orange;
+    font-size: 25px;
+  }
+  .bgiconleft {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 60px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    z-index: 20;
+    transform: translateY(-20%);
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+  }
+  .bgiconleft:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .bgiconright {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 60px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    z-index: 20;
+    transform: translateY(-20%);
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+  }
+  .bgiconright:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  #icon_left {
+    z-index: 20;
+    cursor: pointer;
+    transform-origin: center;
+    transition: all 0.3s linear;
+    opacity: 0.7;
+    font-size: 30px;
+    color: white;
+  }
+  #icon_left:hover {
+    opacity: 1;
+  }
+  #icon_right {
+    z-index: 20;
+    cursor: pointer;
+    transform-origin: center;
+    transition: all 0.3s linear;
+    opacity: 0.7;
+    font-size: 30px;
+    color: white;
+  }
+  #icon_right:hover {
+    opacity: 1;
+  }
+  
+  .detail_container {
+    position: relative;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+    height: 1700px;
+  }
+  .detail_main {
+    color: rgb(255, 255, 255);
+    padding: 25px 25px;
+    padding-top: 150px;
+  }
+  .detail_poster {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 80px;
+    width: 33%;
+    float: left;
+  }
+  .detail_poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  .detail_heading {
+    width: 66%;
+    margin-left: 400px;
+    margin-top: 60px;
+    padding-bottom: 150px;
+    position: relative;
+  }
+  .detail_heading h4 {
+    font-size: 25px;
+  }
+  .detail_heading h1 {
+    font-size: 50px;
+  }
+  .detail_heading p {
+    letter-spacing: 1.3px;
+    margin: 0;
+    color: rgb(223, 223, 223);
+  }
+  .fadetop {
+    background-image: linear-gradient(
+      180deg,
+      transparent,
+      rgba(15, 15, 15) 100%,
+      rgba(10, 10, 10),
+      rgba(10, 10, 10)
+    );
+    height: 400px;
+    width: 100%;
+    position: absolute;
+  }
+  .main_icon {
+    display: flex;
+    margin-top: 50px;
+  }
+  .main_icon span {
+    color: rgb(255, 27, 27);
+  }
+  .icon_playarrowicon {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  .icon_shareicon {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  #icon_play {
+    color: red;
+    font-size: 35px;
+  }
+  #icon_share {
+    font-size: 25px;
+    color: red;
+  }
+  .detail_rate {
+    display: flex;
+    margin-top: 50px;
+  }
+  .vote_average {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid white;
+    padding-right: 15px;
+  }
+  .voted {
+    font-size: 25px;
+    color: orange;
+  }
+  .imdb {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: orange;
+    padding: 2px;
+    border-radius: 6px;
+  }
+  .rate {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-right: 1px solid white;
+  }
+  .rate span {
+    font-size: 20px;
+  }
+  .add_heart {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .add {
+    margin-right: 10px;
+  }
+  #icon_add {
+    font-size: 25px;
+  }
+  #icon_heart {
+    font-size: 25px;
+  }
+  #icon_heart:hover {
+    color: red;
+  }
+  .select {
+    margin-top: 50px;
+  }
+  .list_tabs {
+    width: 100%;
+  }
+  .tabs_detail {
+    border-bottom: 1rem;
+  }
+  #tabs {
+    color: rgb(255, 255, 255);
+  }
+  .title_video {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+  .title_video a {
+    text-decoration: none;
+    color: rgb(0, 156, 199);
+  }
+  .title_video a:hover {
+    color: greenyellow;
+  }
+  .bg_overview {
+    background-color: #fff;
+    height: 1px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .title_cast {
+    margin-top: 20px;
+  }
+  .director {
+    margin-top: 20px;
+    display: flex;
+  }
+  .img_director {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .img_director img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  
+  .search_container {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 80px;
+    background-image: linear-gradient(
+      rgba(15, 15, 15) 40%,
+      rgba(17, 17, 17),
+      rgba(17, 17, 17)
+    );
+    transition: all 0.3s linear;
+  }
+  .search_movie {
+    padding: 40px 60px;
+    display: grid;
+    gap: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .item_search {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    margin: 12px 0;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    opacity: 0.8;
+  }
+  .item_search:hover {
+    transform: scale(1.2);
+    z-index: 10;
+    opacity: 1;
+  }
+  .item_search img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .item_search span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .notfound {
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  /* footer movie */
+  .footer_container {
+    background-color: rgb(15, 15, 15);
+    color: rgb(255, 255, 255);
+    position: relative;
+    margin: 0;
+    min-height: 600px;
+  }
+  .footer_1 {
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  #email {
+    font-size: 14px;
+    width: 100%;
+    height: 2.5rem;
+    border: none;
+    font-weight: 400;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+  
+  
+  #checkbox {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .title_sub p {
+    color: rgb(255, 255, 255);
+  }
+  .bg_bottom {
+    height: 1px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 50px;
+  }
+  .footer_2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+  }
+  .footer_netflix h1 {
+    color: rgb(224, 30, 30);
+  }
+  .footer_netflix ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  .footer_netflix ul li {
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+  #icon_facebook {
+    font-size: 20px;
+  }
+  .footer_pages p {
+    color: rgb(255, 255, 255);
+  }
+  .footer_pages p:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 830px) {
+    .navbar_container {
+      height: 60px;
+    }
+    .logo {
+      width: 80px;
+    }
+    .navbar_search .iconsearch {
+      top: 2px;
+    }
+    .navbar_search {
+      padding-left: 0px;
+      top: -3px;
+    }
+    .input {
+      font-size: 12px;
+    }
+    #btn_login {
+      font-size: 12px;
+    }
+    #btn_logout {
+      font-size: 13px;
+    }
+  
+    #mode_home {
+      height: 450px;
+      max-width: 20px;
+      top: -150%;
+      left: 6%;
+      margin-top: 0px;
+      margin-left: 5px;
+    }
+    #mode_home button {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      min-height: 20px;
+      margin-top: 3px;
+    }
+    .infoIntrol {
+      position: absolute;
+      top: 60px;
+      left: 40px;
+    }
+    .headdingIntrol {
+      font-size: 25px;
+    }
+    .overViewIntrol {
+      font-size: 12px;
+      line-height: 1.3;
+      padding-top: 5px;
+    }
+    .fadebottom {
+      height: 108px;
+    }
+    .content_movie {
+      padding: 15px 15px;
+    }
+    .list_movie {
+      padding-top: 20px;
+      padding-bottom: 15px;
+    }
+    .movie_item img {
+      height: 240px;
+    }
+    .movie_rate h3 {
+      font-size: 15px;
+    }
+    .bgiconright {
+      height: 60px;
+      width: 35px;
+      z-index: 20;
+      transform: translateY(-20%);
+      border-radius: 2px;
+    }
+    #icon_right {
+      font-size: 35px;
+    }
+    .bgiconleft {
+      height: 60px;
+      width: 35px;
+      z-index: 20;
+      transform: translateY(-20%);
+      border-radius: 2px;
+    }
+    #icon_left {
+      font-size: 35px;
+    }
+    .name_detail {
+      left: 40px;
+    }
+    .name_detail h1 {
+      font-size: 30px;
+    }
+    .name_detail p {
+      font-size: 18px;
+    }
+    .search_container {
+      padding-top: 60px;
+    }
+    .search_movie {
+      gap: 7px;
+    }
+    .item_search {
+      max-width: 165px;
+      margin: 8px 0;
+      border-radius: 8px;
+    }
+    .item_search span {
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 430px) {
+    .navbar_container {
+      height: 30px;
+    }
+    .logo {
+      width: 35px;
+    }
+    .navbar_search {
+      padding-left: 0px;
+    }
+    .navbar_search .iconsearch {
+      width: 0.4em;
+      position: absolute;
+      top: -10px;
+      left: -4px;
+    }
+    .input {
+      font-size: 8px;
+      outline: none;
+      border: 0.2px solid #fff;
+      padding: 5px;
+      padding-left: 2px;
+      background-color: #222;
+      transition: 0.3s ease-in;
+      color: white;
+      margin-left: 20px;
+    }
+    .input:focus {
+      padding-left: 10px;
+      width: 100px;
+      cursor: pointer;
+      opacity: 1;
+      border-radius: 6px;
+    }
+    #log_container {
+      right: 0;
+    }
+    #btn_login {
+      font-size: 6px;
+      margin-left: -50px;
+    }
+    #icon_login {
+      font-size: 10px;
+    }
+    .infoIntrol {
+      position: absolute;
+      top: 40px;
+      left: 15px;
+    }
+    .overViewIntrol {
+      font-size: 6px;
+      line-height: 1.3;
+      padding-top: 5px;
+    }
+    .headdingIntrol {
+      font-size: 10px;
+    }
+    #btnVolume {
+      font-size: 25px;
+    }
+    .fadebottom {
+      height: 50px;
+    }
+    #mode_home {
+      height: 250px;
+      max-width: 20px;
+      top: -150%;
+      left: 10%;
+      margin-top: 0px;
+      margin-left: 5px;
+    }
+    #mode_home button {
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      min-height: 20px;
+      margin-top: 3px;
+    }
+    #-actions {
+      margin-bottom: -40px;
+    }
+    #-actions button {
+      margin-bottom: 0px;
+    }
+    #-actions button .MuiSvgIcon-root {
+      font-size: 10px;
+    }
+    .content_movie {
+      padding: 7px 8px 0;
+    }
+    .content_movie h1 {
+      font-size: 10px;
+    }
+    .list_movie {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      grid-template-columns: repeat(20, 100px);
+      gap: 3px;
+    }
+    .movie_item img {
+      height: 120px;
+    }
+    .movie_rate h3 {
+      font-size: 8px;
+    }
+    .bgiconleft {
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 30px;
+      width: 20px;
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      z-index: 20;
+      transform: translateY(-20%);
+      display: flex;
+      align-items: center;
+      border-radius: 2px;
+    }
+    #icon_left {
+      font-size: 20px;
+    }
+    .bgiconright {
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 30px;
+      width: 20px;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      z-index: 20;
+      transform: translateY(-20%);
+      display: flex;
+      align-items: center;
+      border-radius: 2px;
+    }
+    #icon_right {
+      font-size: 20px;
+    }
+    .name_detail {
+      font-size: 10px;
+      top: 10px;
+      left: 20px;
+    }
+    p {
+      font-size: 8px;
+    }
+    #login_container {
+      width: 200px;
+      height: 250px;
+      border: 2px solid grey;
+      border-radius: 12px;
+      padding: 10px;
+    }
+    #avatar {
+      width: 20px;
+      height: 20px;
+    }
+    #icon_lock {
+      font-size: 15px;
+    }
+    #login_container h3 {
+      font-size: 15px;
+      margin-bottom: 0px;
+      margin-top: 2px;
+    }
+    #login_container button {
+      font-size: 8px;
+    }
+    form .css-17xyvby-MuiStack-root {
+      margin: 0 auto;
+      width: 0px;
+      align-items: center;
+    }
+    .css-17xyvby-MuiStack-root .MuiFormControl-root {
+      width: 150px;
+      margin-top: 10px;
+    }
+    .css-17xyvby-MuiStack-root .MuiFormControl-root label {
+      font-size: 10px;
+      transform-origin: none;
+    }
+    .css-17xyvby-MuiStack-root .MuiFormControl-root .MuiOutlinedInput-root {
+      height: 30px;
+    }
+    #username {
+      font-size: 8px;
+    }
+    #password {
+      font-size: 8px;
+    }
+    #icon_show .MuiSvgIcon-root {
+      font-size: 0.8rem;
+    }
+    .css-trtf15-MuiStack-root {
+      margin-left: 12px;
+    }
+    .css-trtf15-MuiStack-root .MuiSvgIcon-root {
+      font-size: 1rem;
+    }
+    .css-trtf15-MuiStack-root .MuiTypography-root {
+      font-size: 8px;
+    }
+    form .css-2ubg3d-MuiStack-root {
+      width: 150px;
+    }
+    form .css-2ubg3d-MuiStack-root button {
+      font-size: 10px;
+      height: 25px;
+    }
+    form .css-2ubg3d-MuiStack-root p {
+      font-size: 8px;
+      margin-top: 2px;
+    }
+    #icon_account {
+      font-size: 10px;
+    }
+    #btn_logout {
+      font-size: 6px;
+      margin-left: -10px;
+    }
+    .search_container {
+      padding-top: 0px;
+    }
+    .search_movie {
+      gap: 4px;
+    }
+    .item_search {
+      max-width: 60px;
+      height: 100px;
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+    .item_search span {
+      font-size: 6px;
+    }
+    .notfound {
+      font-size: 7px;
+    }
+  }
+  
