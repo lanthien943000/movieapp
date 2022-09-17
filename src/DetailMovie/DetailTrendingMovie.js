@@ -157,26 +157,9 @@ function DetailTrending({ UrlData }) {
                               indicatorColor="primary"
                               textColor="inherit"
                             >
-                              <Tab
-                                label="OverViews"
-                                {...a11yProps(0)}
-                                id="tabs"
-                              />
-                              <Tab
-                                label="Item Two"
-                                {...a11yProps(1)}
-                                id="tabs"
-                              />
-                              <Tab
-                                label="Item Three"
-                                {...a11yProps(2)}
-                                id="tabs"
-                              />
-                              <Tab
-                                label="Item Three"
-                                {...a11yProps(3)}
-                                id="tabs"
-                              />
+                              <Tab label="About" {...a11yProps(0)} id="tabs" />
+                              <Tab label="Cast" {...a11yProps(1)} id="tabs" />
+                              <Tab label="Rating" {...a11yProps(2)} id="tabs" />
                             </Tabs>
                           </Box>
                           <TabPanel value={value} index={0}>
@@ -199,6 +182,8 @@ function DetailTrending({ UrlData }) {
               </div>
             </div>
           );
+        } else {
+          return console.log("Error Data Message");
         }
       })}
     </div>

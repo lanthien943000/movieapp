@@ -69,6 +69,7 @@ function DetailAction({ UrlData }) {
     <div className="detail_container">
       {movies.map((movie) => {
         if (movie.id == params.id) {
+          console.log(params.id);
           return (
             <div key={movie.id}>
               <div
@@ -183,6 +184,8 @@ function DetailAction({ UrlData }) {
               </div>
             </div>
           );
+        } else {
+          return console.log("DataError Message");
         }
       })}
     </div>
